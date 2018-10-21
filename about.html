@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+  <title>About Me</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <style>
+    /* Remove the navbar's default margin-bottom and rounded borders */ 
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+    }
+    
+    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+    .row.content {height: 450px}
+    
+    /* Set gray background color and 100% height */
+    .sidenav {
+      padding-top: 20px;
+      background-color: #f1f1f1;
+      height: 100%;
+    }
+    
+    /* Set black background color, white text and some padding */
+    footer {
+      background-color: #555;
+      color: white;
+      padding: 15px;
+    }
+    
+    /* On small screens, set height to 'auto' for sidenav and grid */
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 15px;
+      }
+      .row.content {height:auto;} 
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="#">Alex's Webpage</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li><a href="index.html">Home</a></li>
+        <li class="active"><a href="about.html">About</a></li>
+        <li><a href="projects.php">Projects</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<h><b>Places I've Lived</b></h>
+
+<div id="map" style="width:100%;height:400px;"></div>
+
+<h><b>Places I've Traveled</b></h>
+
+<script>
+function myMap() {
+    var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 4,
+          center: {lat: 37.0902, lng: -95.7129},
+          disableDefaultUI: true
+        });
+    
+        var chicagoString = '<div id="content">'+
+            '<div id="siteNotice">'+
+            '</div>'+
+            '<h1 id="firstHeading" class="firstHeading">Chicago, Illinois</h1>'+
+            '<div id="bodyContent">'+
+            '<p>Born a Cubs fan on May 10th, 1994 in Chicago, Illinois minutes before twin brother ' +
+            'Bryan was born. I lived in a suburb of Chicago named Elmhurst for 4.5 years.' +
+            '</div>'+
+            '</div>';
+
+        var chicagoWindow = new google.maps.InfoWindow({
+          content: chicagoString
+        });
+
+        var marker = new google.maps.Marker({
+          position: {lat: 41.8781, lng: -87.6298},
+          map: map,
+          title: 'Chicago, Illinois'
+        });
+        marker.addListener('click', function() {
+          chicagoWindow.open(map, marker);
+        });
+        
+        var thorntonString = '<div id="content">'+
+            '<div id="siteNotice">'+
+            '</div>'+
+            '<h1 id="firstHeading" class="firstHeading">Thornton, Colorado</h1>'+
+            '<div id="bodyContent">'+
+            '<p>Moved to Thornton, CO in August of 1998 a month before my youngest ' +
+            'brother Michael is born. I grew up riding my bike around and ' +
+            'playing several team sports. I played baseball and golf during school ' +
+            'at Mountain Range High School. I also participated in Boy Scouts and ended ' + 
+            'up earning my Eagle Scout rank at the completion of my senior year. ' +
+            '</div>'+
+            '</div>';
+    
+        var thorntonWindow = new google.maps.InfoWindow({
+          content: thorntonString
+        });
+
+        var marker = new google.maps.Marker({
+          position: {lat: 39.8680, lng: -104.9719},
+          map: map,
+          title: 'Thornton, Colorado'
+        });
+        marker.addListener('click', function() {
+          thorntonWindow.open(map, marker);
+        });
+        
+        var goldenString = '<div id="content">'+
+            '<div id="siteNotice">'+
+            '</div>'+
+            '<h1 id="firstHeading" class="firstHeading">Golden, Colorado</h1>'+
+            '<div id="bodyContent">'+
+            '<p>I attened college at Colorado School of Mines in Golden, Colorado from 2012 to ' +
+            '2016 (SKO OREDIGGERS!!). I earned my Bachelors of Science in Computer Science. I spent most of my weekdays ' +
+            'training on the bike for races on the weekends. '
+            '</div>'+
+            '</div>';
+
+        var goldenWindow = new google.maps.InfoWindow({
+          content: goldenString
+        });
+
+        var marker = new google.maps.Marker({
+          position: {lat: 39.7555, lng: -105.2211},
+          map: map,
+          title: 'Golden, Colorado'
+        });
+        marker.addListener('click', function() {
+          goldenWindow.open(map, marker);
+        });
+        
+        var okcString = '<div id="content">'+
+            '<div id="siteNotice">'+
+            '</div>'+
+            '<h1 id="firstHeading" class="firstHeading">Oklahoma City, Oklahoma</h1>'+
+            '<div id="bodyContent">'+
+            '<p>I relocated to OKC in 2016 for my first job out of college with FAST Enterprises. I met the love of my life  ' +
+            'Taylor in Oklahoma and together we adopted our precious doggie Finn. '
+            '</div>'+
+            '</div>';
+
+        var okcWindow = new google.maps.InfoWindow({
+          content: okcString
+        });
+
+        var marker = new google.maps.Marker({
+          position: {lat: 35.4676, lng: -97.5164},
+          map: map,
+          title: 'Oklahoma City, Oklahoma'
+        });
+        marker.addListener('click', function() {
+          okcWindow.open(map, marker);
+        });
+        
+    }
+    
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDyFJyHvN58AaXI6BDHp4_fT1D1xXXIusE&callback=myMap"></script>
+</body>
+</html>
+  
