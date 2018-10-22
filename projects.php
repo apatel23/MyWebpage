@@ -42,22 +42,35 @@ function oauth($redirurl){
         $activity_array = $activity_array[0];
         //print_r($activity_array);
         
-        echo '<p>Activity Name: '.$activity_array->name.'</p>';
-        echo '<p>Activity Type: '.$activity_array->type.'</p>';
+        echo '<h1>My Latest Activity</h1>';
+        echo '<p>"'.$activity_array->name.'"</p>';
+        echo '<p id="type">'.$activity_array->type.'</p>';     
         echo '<p>Distance: '.metersToMiles($activity_array->distance).' miles</p>';
-        echo '<p>Elapsed Time: '.$activity_array->elapsed_time.'</p>';        
-        echo '<p>Elevation Gain: '.$activity_array->total_elevation_gain.'</p>';
+        echo '<p>Elapsed Time: '.secondsToMinutes($activity_array->elapsed_time).' minutes</p>';        
+        echo '<p>Elevation Gain: '.metersToFeet($activity_array->total_elevation_gain).' feet</p>';
 	}
 	
 	function metersToMiles($meters) {
-	   return $meters * 0.000621371;
+	   return number_format($meters * 0.000621371,2);
+	}
+	
+	function metersToFeet($meters) {
+	   return number_format($meters * 3.28084,2);
+	}
+	
+	function secondsToMinutes($seconds) {
+	   return number_format($seconds / 60,2);
+	}
+	
+	function getYearlyTotals() {
+	
 	}
 
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
-  <title>Bootstrap Example</title>
+  <title>Projects</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -120,11 +133,36 @@ function oauth($redirurl){
   </div>
 </nav>
 
+
+<style>
+p {
+    margin: 5px;
+}
+</style>
+
 <?
     oauth("");  
-    getAthlete(); 
+    //getAthlete(); 
     getLastActivity();
 ?>
+
+<script>
+// display run/ride image
+var type = document.getElementById("type").innerHTML;
+var img = document.createElement("img");
+
+    if (type.trim().toLowerCase() === "run") {
+        img.src = "ghost10.jpeg"
+        img.width = 100;
+        img.height = 100;
+    } else {
+        img.src = "aeros.jpg"
+        img.width = 200;
+        img.height = 100;
+    }
+      
+    document.body.appendChild(img);
+</script> 
 
 
 </body>
