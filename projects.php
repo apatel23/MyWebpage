@@ -110,7 +110,7 @@ function oauth($redirurl){
     }
   </style>
 </head>
-<body>
+<body align="center">
 
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
@@ -124,9 +124,9 @@ function oauth($redirurl){
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Home</a></li>
+        <li><a href="#">Home</a></li>
         <li><a href="about.html">About</a></li>
-        <li><a href="projects.php">Projects</a></li>
+        <li class="active"><a href="projects.php">Projects</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
     </div>
@@ -134,36 +134,40 @@ function oauth($redirurl){
 </nav>
 
 
-<style>
-p {
-    margin: 5px;
-}
-</style>
+<table align="center">
+   <tbody>
+      <tr>
+         <td align="center">
 
-<?
-    oauth("");  
-    //getAthlete(); 
-    getLastActivity();
-?>
+            <?
+                oauth("");  
+                //getAthlete(); 
+                getLastActivity();
+            ?>
+            
+            
+            <script>
+            // display run/ride image
+            var type = document.getElementById("type").innerHTML;
+            var img = document.createElement("img");
+            
+                if (type.trim().toLowerCase() === "run") {
+                    img.src = "ghost10.jpeg"
+                    img.width = 100;
+                    img.height = 100;
+                } else {
+                    img.src = "aeros.jpg"
+                    img.width = 200;
+                    img.height = 100;
+                }
+                  
+                document.body.appendChild(img);
+            </script> 
 
-<script>
-// display run/ride image
-var type = document.getElementById("type").innerHTML;
-var img = document.createElement("img");
-
-    if (type.trim().toLowerCase() === "run") {
-        img.src = "ghost10.jpeg"
-        img.width = 100;
-        img.height = 100;
-    } else {
-        img.src = "aeros.jpg"
-        img.width = 200;
-        img.height = 100;
-    }
-      
-    document.body.appendChild(img);
-</script> 
-
+        </td>
+    </tr>
+  </tbody>
+</table>
 
 </body>
 </html>
