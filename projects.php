@@ -43,9 +43,9 @@ function oauth($redirurl){
         //print_r($activity_array);
         
         echo '<h1>My Latest Activity</h1>';
-        echo '<p>"'.$activity_array->name.'"</p>';
+        echo '<h2>"'.$activity_array->name.'"</h2>';
         echo '<p id="type">'.$activity_array->type.'</p>';     
-        echo '<p>Distance: '.metersToMiles($activity_array->distance).' miles</p>';
+        echo '<p>'.metersToMiles($activity_array->distance).' miles</p>';
         echo '<p>Elapsed Time: '.secondsToMinutes($activity_array->elapsed_time).' minutes</p>';        
         echo '<p>Elevation Gain: '.metersToFeet($activity_array->total_elevation_gain).' feet</p>';
 	}
